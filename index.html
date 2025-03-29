@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tipos de Bases de Datos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Bases de datos</h1>
+        <p>Un base de datos es un conjunto organizado y estructurado de información almacenada en un sistema informático, diseñado para gestionar, recuperar, actualizar y analizar datos de manera eficiente. Los datos se organizan en tablas (en bases de datos relacionales), documentos (en bases NoSQL), grafos u otros modelos, según el tipo de base de datos.</p>
+<ul>
+    <h2>Características principales:</h2>
+    <li><strong>Estructuración:</strong> Los datos se almacenan siguiendo un esquema definido (por ejemplo, tablas con filas y columnas en bases relacionales).</li>
+    <li><strong>Gestión centralizada:</strong> Se utiliza un Sistema de Gestión de Bases de Datos (DBMS) como MySQL, Oracle o MongoDB para administrar el acceso, la seguridad y las operaciones.</li>
+    <li><strong>Consulta eficiente:</strong> Permite buscar y filtrar información rápidamente mediante lenguajes como SQL (para bases relacionales) o métodos específicos en bases NoSQL.</li>
+    <li><strong>ntegridad y seguridad:</strong>I Garantiza la precisión de los datos mediante reglas de validación, claves primarias, foráneas y mecanismos de autenticación.</li>
+    <li><strong>Escalabilidad:</strong> Puede adaptarse a grandes volúmenes de datos y usuarios simultáneos.</li>
+</ul>
+<ul>
+    <h2>Tipos de bases de datos:</h2>
+    <li><strong>Relacionales (SQL):</strong> Utilizan tablas y relaciones entre ellas. Ejemplos: MySQL, PostgreSQL.</li>
+    <li><strong>NoSQL:</strong> Diseñadas para manejar grandes volúmenes de datos no estructurados. Ejemplos: MongoDB, Cassandra.</li>
+    <li><strong>Orientadas a objetos:</strong> Almacenan objetos complejos (ej: PostgreSQL con extensiones).</li>
+    <LI><strong>En memoria:</strong>Optimizadas para velocidad (ej: Redis).</LI>
+    <li><strong>Distribuidas: </strong>Datos replicados en múltiples servidores (ej: Google Spanner)</li>
+</ul>
+<h2></h2>
+        <div class="comparison-section">
+            <div class="card">
+                <h2>Relacionales (SQL)</h2>
+                <h3>Características:</h3>
+                <p>Estructura en tablas: Datos organizados en tablas con filas (registros) y columnas (campos).</p>
+                <p>Esquema rígido: Requieren definir la estructura (tablas, tipos de datos, relaciones) antes de almacenar datos.</p>
+                <p>SQL (Structured Query Language): Lenguaje estándar para consultas.</p>
+                <p>ACID: Garantizan transacciones seguras (Atomicidad, Consistencia, Aislamiento, Durabilidad).</p>
+                <p>Relaciones: Usan claves primarias y foráneas para vincular tablas.</p>
+                <h4>Ejemplos de Sistemas:</h4>
+                <p>MySQL, PostgreSQL, Oracle, Microsoft SQL Server.</p>
+                <h4>Ejemplo Práctico:</h4>
+                <p>Imagina una base de datos para una tienda online:</p>
+                <p><strong>Tabla Usuarios:</strong></p>
+                <table>
+                    <tr>
+                        <th>id (PK)</th>
+                        <th>nombre</th>
+                        <th>email</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Ana</td>
+                        <td>ana@example.com</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Carlos</td>
+                        <td>carlos@example.com</td>
+                    </tr>
+                </table>
+                <p><strong>Tabla Pedidos:</strong></p>
+                <table>
+                    <tr>
+                        <th>id (PK)</th>
+                        <th>usuario_id (FK)</th>
+                        <th>producto</th>
+                        <th>cantidad</th>
+                    </tr>
+                    <tr>
+                        <td>101</td>
+                        <td>1</td>
+                        <td>Laptop</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>102</td>
+                        <td>2</td>
+                        <td>Teléfono</td>
+                        <td>2</td>
+                    </tr>
+                </table>
+                <p><strong>Relación:</strong></p>
+                <p>usuario_id en Pedidos referencia al id en Usuarios.</p>
+                <p><strong>Consulta SQL:</strong></p>
+                <pre>
+SELECT Usuarios.nombre, Pedidos.producto
+FROM Usuarios
+JOIN Pedidos ON Usuarios.id = Pedidos.usuario_id
+WHERE Usuarios.id = 1;
+                </pre>
+                <p><strong>Resultado:</strong></p>
+                <table>
+                    <tr>
+                        <th>nombre</th>
+                        <th>producto</th>
+                    </tr>
+                    <tr>
+                        <td>Ana</td>
+                        <td>Laptop</td>
+                    </tr>
+                </table>
+
+                <button class="toggle-button" onclick="toggleCode('sqlExample')">Mostrar Ejemplo</button>
+                <div id="sqlExample" class="hidden">
+                    <div class="code-block">
+                        <h3>Estructura de Tablas</h3>
+                        <pre>
+CREATE TABLE Usuarios (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(50),
+    email VARCHAR(100)
+);
+
+CREATE TABLE Pedidos (
+    id INT PRIMARY KEY,
+    usuario_id INT,
+    producto VARCHAR(50),
+    FOREIGN KEY (usuario_id) REFERENCES Usuarios(id)
+);</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>NoSQL</h2>
+<h3>Características:</h3>
+<p><strong>Flexibilidad:</strong> No requieren un esquema fijo (ideal para datos no estructurados o semi-estructurados).</p>
+<p><strong>Escalabilidad horizontal:</strong> Distribuyen datos en múltiples servidores.</p>
+<p><strong>Modelos variados:</strong></p>
+<ul>
+    <li><strong>Documentos (JSON/BSON):</strong> Ej: MongoDB.</li>
+    <li><strong>Clave-Valor:</strong> Ej: Redis.</li>
+    <li><strong>Columnas:</strong> Ej: Cassandra.</li>
+    <li><strong>Grafos:</strong> Ej: Neo4j.</li>
+</ul>
+<p><strong>Ejemplos de Sistemas:</strong> MongoDB, Cassandra, Redis, Couchbase.</p>
+
+<h4>Ejemplo Práctico (MongoDB - Documentos):</h4>
+<p>En una red social, se almacenan perfiles de usuarios con datos variables:</p>
+
+<h5>Colección Usuarios:</h5>
+<pre>
+{
+    "_id": "abc123",
+    "nombre": "Ana",
+    "email": "ana@example.com",
+    "intereses": ["tecnología", "viajes"],
+    "amigos": [
+        {"id": "def456", "nombre": "Carlos"},
+        {"id": "ghi789", "nombre": "Luisa"}
+    ],
+    "actividad": {
+        "ultimo_login": "2023-10-25",
+        "posts": 15
+    }
+}
+</pre>
+
+<h5>Consulta en MongoDB (Buscar usuarios interesados en "viajes"):</h5>
+<pre></pre>
+db.Usuarios.find({ "intereses": "viajes" });
+</pre>
+<p><strong>Ventaja:</strong> Los datos anidados (como amigos o actividad) se almacenan en un solo documento, evitando joins complejos.</p>
+<table>
+    <tr>
+        <th>Aspecto</th>
+        <th>Relacional (SQL)</th>
+        <th>NoSQL</th>
+    </tr>
+    <tr>
+        <td>Estructura</td>
+        <td>Tablas con esquema fijo</td>
+        <td>Documentos, grafos, etc.</td>
+    </tr>
+    <tr>
+        <td>Escalabilidad</td>
+        <td>Vertical (mejor para ACID)</td>
+        <td>Horizontal (alta carga)</td>
+    </tr>
+    <tr>
+        <td>Flexibilidad</td>
+        <td>Baja (requiere esquema)</td>
+        <td>Alta (datos dinámicos)</td>
+    </tr>
+    <tr>
+        <td>Ejemplo de Uso</td>
+        <td>Sistema bancario</td>
+        <td>Red social, IoT, Big Data</td>
+    </tr>
+    <tr>
+        <td>Lenguaje</td>
+        <td>SQL</td>
+        <td>Lenguajes específicos</td>
+    </tr>
+</table>
+                <button class="toggle-button" onclick="toggleCode('nosqlExample')">Mostrar Ejemplo</button>
+                <div id="nosqlExample" class="hidden">
+                    <div class="code-block">
+                        <h3>Documento JSON (MongoDB)</h3>
+                        <pre>
+{
+    "_id": "abc123",
+    "nombre": "Ana",
+    "intereses": ["tech", "viajes"],
+    "amigos": [
+        {"id": "def456", "nombre": "Carlos"}
+    ],
+    "actividad": {
+        "ultimo_login": "2023-10-25",
+        "posts": 15
+    }
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Comparativa</h2>
+            <table>
+                <tr>
+                    <th>Característica</th>
+                    <th>SQL</th>
+                    <th>NoSQL</th>
+                </tr>
+                <tr>
+                    <td>Esquema</td>
+                    <td>Fijo</td>
+                    <td>Flexible</td>
+                </tr>
+                <tr>
+                    <td>Escalabilidad</td>
+                    <td>Vertical</td>
+                    <td>Horizontal</td>
+                </tr>
+                <tr>
+                    <td>Ejemplos</td>
+                    <td>MySQL, PostgreSQL</td>
+                    <td>MongoDB, Redis</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+<script src="script.js"></script>
+</html>

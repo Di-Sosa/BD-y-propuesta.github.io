@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban - Sistema de Gestión de Deudas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section class="kanban-section">
+            <h2>🚀 Gestión de Deudas - Flujo de Desarrollo</h2>
+            <div class="kanban-board" id="kanban-board">
+                <!-- PLANIFICACIÓN -->
+                <div class="kanban-column">
+                    <h3><i class="material-icons">assignment</i> Planificación</h3>
+                    <div class="kanban-items" id="planning">
+                        <div class="kanban-item" draggable="true">
+                            <h4>Definir alcance del sistema</h4>
+                            <p>Registro de clientes, cálculo de deudas con tasa cambiaria, generación de reportes</p>
+                            <span class="task-label planning">Requerimientos</span>
+                        </div>
+                        <div class="kanban-item" draggable="true">
+                            <h4>Estructura de archivos</h4>
+                            <p>Diseñar formato para .dat (clientes) y .bin (tasas)</p>
+                            <span class="task-label planning">Arquitectura</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ANÁLISIS -->
+                <div class="kanban-column">
+                    <h3><i class="material-icons">search</i> Análisis</h3>
+                    <div class="kanban-items" id="analysis">
+                        <div class="kanban-item" draggable="true">
+                            <h4>Flujo de deudas</h4>
+                            <p>Registro, modificación y cálculo con tasa del día</p>
+                            <span class="task-label analysis">Lógica</span>
+                        </div>
+                        <div class="kanban-item" draggable="true">
+                            <h4>Persistencia de datos</h4>
+                            <p>Manejo de archivos binarios para clientes y tasas</p>
+                            <span class="task-label analysis">Datos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DISEÑO -->
+                <div class="kanban-column">
+                    <h3><i class="material-icons">design_services</i> Diseño</h3>
+                    <div class="kanban-items" id="design">
+                        <div class="kanban-item" draggable="true">
+                            <h4>Estructura Deudas</h4>
+                            <p>class deudas { cedula, nombre, debe, descripcion }</p>
+                            <span class="task-label design">Clases</span>
+                        </div>
+                        <div class="kanban-item" draggable="true">
+                            <h4>Interfaz consola</h4>
+                            <p>Menús interactivos con CLEAR y formatos</p>
+                            <span class="task-label design">UI Consola</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DESARROLLO -->
+                <div class="kanban-column">
+                    <h3><i class="material-icons">code</i> Desarrollo</h3>
+                    <div class="kanban-items" id="development">
+                        <div class="kanban-item" draggable="true">
+                            <h4>CRUD Clientes</h4>
+                            <p>Implementar InsertarCliente() y ModificarEnArchivoBinario()</p>
+                            <span class="task-label development">Archivos</span>
+                        </div>
+                        <div class="kanban-item" draggable="true">
+                            <h4>Cálculo de tasas</h4>
+                            <p>Desarrollar CalcularTasa() y conversiones</p>
+                            <span class="task-label development">Lógica</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRUEBAS -->
+                <div class="kanban-column">
+                    <h3><i class="material-icons">bug_report</i> Pruebas</h3>
+                    <div class="kanban-items" id="testing">
+                        <div class="kanban-item" draggable="true">
+                            <h4>Validación datos</h4>
+                            <p>Probar lectura/escritura en .dat y .bin</p>
+                            <span class="task-label testing">Integridad</span>
+                        </div>
+                        <div class="kanban-item" draggable="true">
+                            <h4>Cálculos monetarios</h4>
+                            <p>Verificar conversiones BS/$ con diferentes tasas</p>
+                            <span class="task-label testing">Precisión</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DESPLIEGUE -->
+                <div class="kanban-column">
+                    <h3><i class="material-icons">cloud_upload</i>Lanzamiento</h3>
+                    <div class="kanban-items" id="deployment">
+                        <div class="kanban-item" draggable="true">
+                            <h4>Ejecutable Windows/Linux</h4>
+                            <p>Compilar versión final con CLEAR</p>
+                            <span class="task-label deployment">Build</span>
+                        </div>
+                        <div class="kanban-item" draggable="true">
+                            <h4>Migración de datos</h4>
+                            <p>Implementar sistema de backup</p>
+                            <span class="task-label deployment">Datos</span>
+                        </div>
+                    </div>
+                </div>
+
+        </section>
+    </main>
+</body>
+</html>
